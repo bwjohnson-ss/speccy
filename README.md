@@ -188,11 +188,12 @@ To use Speccy without installing any node/npm specific dependencies, you can run
 docker run wework/speccy lint https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.yaml
 ```
 
-You can work with local files by mounting your spec and any config files to the `/project` directory when you run the container:
+You can work with local files by bind mounting your spec and any config files to the `/project` directory when you run the container:
 
 ```
 docker run \
-  -v openapi.yaml:/project/openapi.yaml \
+  --rm \
+  -v $(pwd)/openapi.yaml:/project/openapi.yaml \
   wework/speccy lint openapi.yaml
 ```
 
